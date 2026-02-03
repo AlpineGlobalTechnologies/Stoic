@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title><%= content_for?(:title) ? yield(:title) : "Admin - Portfolio" %></title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+
+  <!-- Optional: Add your favicon, fonts, etc. here -->
+</head>
+
+<body class="admin-body">
+
+  <header class="admin-header">
+    <div class="inner">
+      <h1><%= link_to "Admin", admin_root_path %></h1>
+
+      <nav>
+        <%= link_to "Portfolio Items", admin_portfolio_items_path %>
+        <%= link_to "Resume", edit_admin_resume_path %>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo: false }, method: :delete %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <% if flash.any? %>
+      <div class="flash-messages">
+        <% flash.each do |type, msg| %>
+          <div class="flash flash-<%= type %>">
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </main>
+
+  <footer class="admin-footer">
+    <p>&copy; <%= Time.now.year %> Portfolio Admin</p>
+  </footer>
+
+</body>
+</html>

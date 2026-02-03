@@ -1,0 +1,326 @@
+/* No body styles here — move background color to your layout or page if needed */
+.star-block {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;          /* helps with stacking context */
+}
+
+/* Diagonal gradient background */
+.diagonal-hero-bg {
+  position: absolute;
+  inset: 0;
+  height: 400px;               /* keeps original clip height */
+  background: linear-gradient(to right, #4e4376, #2b5876);
+  z-index: -2;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+}
+/* Diagonal gradient background */
+.normal-hero-bg {
+  position: absolute;
+  inset: 0;
+  height: auto;               /* full height */
+  background: linear-gradient(to right, #4e4376, #2b5876);
+  z-index: -2;
+  clip-path: unset;
+}
+
+/* Stars container — full viewport height for falling effect */
+.stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100vh;               /* allows stars to fall across full viewport */
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────────
+   More stars — ~120 small, ~60 medium, ~25 big
+   (you can add/remove positions as desired)
+───────────────────────────────────────────────── */
+.stars-small {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow:
+    1740px 1969px 1.02px rgba(255,255,255,0.86),
+    870px 1492px 1.38px rgba(255,255,255,0.83),
+    207px 100px 1.26px #cbeadd,
+    18px 790px 1.31px #f1e4db,
+    288px 674px 1.05px rgba(255,255,255,0.53),
+    969px 1186px 1.11px #f4d7dc,
+    1829px 1401px 1.14px rgba(255,255,255,0.60),
+    1875px 1130px 1.31px #f0deef,
+    1960px 1547px 1.26px rgba(255,255,255,0.40),
+    1550px 1854px 0.99px #d6ebdb,
+    1348px 1120px 1.03px rgba(255,255,255,0.50),
+    1229px 965px 1.09px rgba(255,255,255,0.43),
+    1269px 310px 0.89px #ced0ce,
+    1041px 1074px 1.02px rgba(255,255,255,0.49),
+    812px 1383px 0.88px #c8d0ec,
+    79px 1442px 0.83px rgba(255,255,255,0.89),
+    909px 1373px 1.32px rgba(255,255,255,0.62),
+    590px 525px 1.05px #ebdadd,
+    1331px 833px 1.47px #efd3e1,
+    1206px 1331px 0.89px #f0d3d7,
+    900px 583px 1.34px rgba(255,255,255,0.41),
+    1371px 204px 1.46px rgba(255,255,255,0.81),
+    1694px 596px 1.29px rgba(255,255,255,0.75),
+    1352px 1211px 0.95px #cfcbec,
+    839px 1597px 1.02px rgba(255,255,255,0.58),
+    154px 1331px 1.06px rgba(255,255,255,0.82),
+    1141px 1204px 1.03px #d2f8e2,
+    261px 323px 1.32px rgba(255,255,255,0.73),
+    1858px 1350px 0.89px rgba(255,255,255,0.55),
+    1145px 1057px 1.38px rgba(255,255,255,0.62),
+    947px 769px 1.47px rgba(255,255,255,0.83),
+    52px 382px 0.91px #fef3fa,
+    392px 1972px 1.12px rgba(255,255,255,0.75),
+    43px 1918px 1.38px rgba(255,255,255,0.40),
+    1212px 1493px 0.99px rgba(255,255,255,0.58),
+    1147px 39px 1.27px #cdfdd5,
+    622px 765px 1.48px rgba(255,255,255,0.73),
+    1828px 1493px 1.05px rgba(255,255,255,0.70),
+    235px 1856px 0.88px rgba(255,255,255,0.69),
+    464px 1713px 0.96px #f3efe5,
+    1797px 700px 0.93px rgba(255,255,255,0.66),
+    174px 178px 1.37px #f8f3d3,
+    1645px 1421px 1.14px rgba(255,255,255,0.41),
+    827px 1854px 1.03px #c8dbde,
+    914px 1900px 1.37px rgba(255,255,255,0.54),
+    439px 971px 1.21px rgba(255,255,255,0.78),
+    1902px 734px 1.19px #fad4df,
+    711px 533px 1.20px rgba(255,255,255,0.77),
+    1489px 826px 1.49px rgba(255,255,255,0.52),
+    1774px 1826px 1.29px #ceecdf,
+    579px 1271px 0.90px rgba(255,255,255,0.54),
+    534px 731px 1.01px rgba(255,255,255,0.51),
+    1879px 273px 1.50px rgba(255,255,255,0.45),
+    460px 1315px 1.39px #d6e6c8,
+    1184px 1737px 1.46px rgba(255,255,255,0.72),
+    166px 273px 1.38px rgba(255,255,255,0.89),
+    316px 536px 1.27px #d2ceca,
+    569px 1490px 1.28px rgba(255,255,255,0.61),
+    1153px 1792px 1.35px rgba(255,255,255,0.62),
+    413px 871px 1.37px rgba(255,255,255,0.57),
+    1772px 942px 1.44px #dfd9fe,
+    957px 1008px 0.90px rgba(255,255,255,0.89),
+    324px 1939px 1.40px #fdfddd,
+    416px 1206px 1.05px rgba(255,255,255,0.48),
+    691px 1279px 1.37px #f3e9f2,
+    318px 1907px 1.16px rgba(255,255,255,0.46),
+    1110px 611px 1.48px rgba(255,255,255,0.59),
+    872px 1872px 0.89px rgba(255,255,255,0.87),
+    654px 1940px 1.35px #cdf2eb,
+    547px 1544px 1.11px rgba(255,255,255,0.48),
+    1144px 399px 1.26px rgba(255,255,255,0.57),
+    5px 698px 0.95px #dff4e7,
+    84px 1873px 1.16px rgba(255,255,255,0.81),
+    1227px 272px 1.10px rgba(255,255,255,0.45),
+    648px 1012px 1.47px rgba(255,255,255,0.82),
+    498px 1912px 1.32px rgba(255,255,255,0.67),
+    614px 1759px 1.21px #e1cad2,
+    1615px 1988px 0.84px rgba(255,255,255,0.60),
+    763px 412px 1.23px #cffae7,
+    833px 1986px 1.34px rgba(255,255,255,0.48),
+    149px 367px 1.26px rgba(255,255,255,0.50),
+    506px 1872px 0.96px rgba(255,255,255,0.83),
+    1073px 1691px 0.88px rgba(255,255,255,0.71),
+    191px 1997px 0.86px #fae3d4,
+    59px 1956px 0.81px rgba(255,255,255,0.58),
+    1641px 1466px 1.06px rgba(255,255,255,0.84),
+    473px 695px 1.39px rgba(255,255,255,0.41),
+    1610px 1168px 1.21px rgba(255,255,255,0.67),
+    1317px 902px 1.36px rgba(255,255,255,0.46),
+    1603px 886px 0.94px rgba(255,255,255,0.61),
+    1829px 875px 0.90px #f4fbf7,
+    995px 1528px 1.14px rgba(255,255,255,0.80),
+    1668px 707px 1.34px rgba(255,255,255,0.45),
+    26px 1872px 1.33px rgba(255,255,255,0.69),
+    1557px 440px 0.80px #fccbd2,
+    537px 722px 0.96px rgba(255,255,255,0.63),
+    1459px 140px 0.94px rgba(255,255,255,0.65),
+    659px 396px 1.42px rgba(255,255,255,0.74),
+    829px 1495px 1.33px rgba(255,255,255,0.63),
+    52px 1216px 1.34px #f6e1db,
+    192px 23px 1.04px rgba(255,255,255,0.58),
+    234px 1363px 1.15px rgba(255,255,255,0.79),
+    1628px 1073px 0.99px rgba(255,255,255,0.71),
+    132px 1268px 1.37px rgba(255,255,255,0.42),
+    1180px 1501px 1.19px rgba(255,255,255,0.52),
+    1656px 1494px 1.18px #d8e5ec,
+    259px 1883px 1.24px rgba(255,255,255,0.61),
+    162px 1977px 0.83px #e6d2df,
+    1310px 272px 1.44px rgba(255,255,255,0.65),
+    115px 705px 0.98px #e9f3c8,
+    1806px 754px 0.83px rgba(255,255,255,0.72),
+    1320px 93px 1.35px rgba(255,255,255,0.49),
+    1724px 1243px 0.85px rgba(255,255,255,0.80),
+    1000px 255px 1.00px rgba(255,255,255,0.67),
+    1528px 1542px 0.90px #caf9ce,
+    74px 514px 1.27px #fbfbfc,
+    123px 712px 1.20px rgba(255,255,255,0.50),
+    1277px 1139px 1.41px rgba(255,255,255,0.80),
+    1030px 1765px 0.98px rgba(255,255,255,0.43),
+    646px 753px 1.29px rgba(255,255,255,0.69);
+  animation: fall 60s linear infinite;
+}
+
+.stars-small::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+/* Medium stars — increased count */
+.stars-medium {
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow:
+    1835px 1475px 2.31px rgba(255,255,255,0.78),
+    906px 758px 2.01px rgba(255,255,255,0.87),
+    508px 1270px 2.42px #d3ced3,
+    308px 929px 2.48px #cfecfb,
+    1322px 1968px 2.49px rgba(255,255,255,0.74),
+    40px 1211px 1.85px #e6d6df,
+    1103px 1836px 2.35px rgba(255,255,255,0.88),
+    290px 892px 1.86px rgba(255,255,255,0.89),
+    1634px 495px 2.48px rgba(255,255,255,0.91),
+    1715px 844px 2.58px #d6dbef,
+    657px 1501px 2.79px rgba(255,255,255,0.76),
+    1203px 1365px 2.64px rgba(255,255,255,0.91),
+    675px 898px 1.93px rgba(255,255,255,0.91),
+    967px 486px 2.16px #e4fafb,
+    95px 358px 1.84px rgba(255,255,255,1.00),
+    586px 453px 2.19px rgba(255,255,255,0.81),
+    1074px 1331px 1.82px rgba(255,255,255,0.82),
+    714px 1862px 2.68px rgba(255,255,255,0.91),
+    1988px 208px 2.06px rgba(255,255,255,0.89),
+    1286px 1917px 2.36px rgba(255,255,255,0.88),
+    696px 362px 2.57px #d1e5f4,
+    334px 1960px 2.36px rgba(255,255,255,0.78),
+    1921px 57px 2.26px rgba(255,255,255,0.74),
+    1729px 1409px 2.13px rgba(255,255,255,0.91),
+    495px 1829px 2.33px rgba(255,255,255,0.96),
+    1000px 448px 2.13px #d5f5fc,
+    1138px 564px 2.20px rgba(255,255,255,0.94),
+    1636px 1574px 2.30px rgba(255,255,255,0.86),
+    454px 694px 2.42px rgba(255,255,255,0.84),
+    1194px 313px 2.51px rgba(255,255,255,0.99),
+    565px 1108px 2.03px rgba(255,255,255,0.88),
+    21px 145px 2.10px #c8c9fe,
+    277px 406px 2.55px rgba(255,255,255,0.96),
+    1321px 1861px 2.73px rgba(255,255,255,0.99),
+    1240px 389px 2.50px #d3cbf5,
+    856px 320px 1.84px #dfdfe1,
+    1410px 715px 2.27px #e8d6ca,
+    479px 1309px 2.14px rgba(255,255,255,0.71),
+    376px 986px 2.19px #d5c8eb,
+    1433px 1206px 2.48px rgba(255,255,255,0.74),
+    1205px 583px 2.78px #fefafe,
+    1924px 1645px 1.99px #e0e7fa,
+    1845px 860px 1.87px rgba(255,255,255,0.98),
+    140px 1889px 2.79px rgba(255,255,255,0.77),
+    888px 608px 1.93px rgba(255,255,255,0.74),
+    687px 1760px 2.35px rgba(255,255,255,0.99),
+    1525px 346px 2.35px rgba(255,255,255,0.87),
+    1582px 1689px 2.25px rgba(255,255,255,0.80),
+    701px 1158px 2.07px #ece7f8,
+    1601px 1429px 2.04px rgba(255,255,255,0.72),
+    250px 929px 2.38px #d6d6e1,
+    1901px 777px 1.92px rgba(255,255,255,0.82),
+    1067px 1653px 2.52px #e9decb,
+    1300px 66px 2.39px #d5f8e9,
+    538px 946px 2.66px #dcefd9,
+    896px 1836px 2.55px rgba(255,255,255,0.85),
+    1029px 1375px 1.90px rgba(255,255,255,0.96),
+    1637px 549px 1.97px rgba(255,255,255,0.72),
+    433px 1717px 2.35px #e3cbf5,
+    313px 853px 2.22px #d2e7cd;
+  animation: fall 100s linear infinite;
+}
+
+.stars-medium::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: inherit;
+}
+
+/* Big / brightest stars — increased count & brightness */
+.stars-big {
+  position: absolute;
+  inset: 0;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow:
+    959px 320px 3.49px rgba(255,255,255,0.85),
+    1108px 1416px 3.48px rgba(255,255,255,0.93),
+    1417px 1311px 3.00px rgba(255,255,255,0.87),
+    1971px 241px 2.62px rgba(255,255,255,0.94),
+    107px 1295px 3.50px #d2d0ef,
+    31px 1905px 3.11px #efd0ed,
+    1463px 1700px 3.53px rgba(255,255,255,1.00),
+    1720px 295px 3.37px rgba(255,255,255,1.00),
+    1695px 1767px 2.76px rgba(255,255,255,0.90),
+    582px 28px 2.73px rgba(255,255,255,0.99),
+    1812px 1671px 3.53px rgba(255,255,255,0.90),
+    1253px 316px 3.56px rgba(255,255,255,0.95),
+    765px 270px 2.77px rgba(255,255,255,0.91),
+    1953px 565px 2.55px #fef8d6,
+    372px 1486px 3.63px rgba(255,255,255,0.86),
+    1157px 1666px 3.47px #cacfcb,
+    965px 1807px 3.69px rgba(255,255,255,0.93),
+    1540px 276px 2.57px rgba(255,255,255,1.00),
+    319px 185px 3.49px #cdcfd1,
+    874px 1950px 3.84px rgba(255,255,255,0.87),
+    931px 1041px 3.65px #f5d6c9,
+    950px 1279px 3.44px rgba(255,255,255,0.96),
+    640px 1227px 3.74px rgba(255,255,255,0.89),
+    564px 475px 2.59px #f0f3fe,
+    517px 499px 2.86px #cfe8dd;
+  animation: fall 140s linear infinite;
+}
+
+.stars-big::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: inherit;
+}
+
+/* Falling animation */
+@keyframes fall {
+  from {
+    transform: translateY(-2000px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

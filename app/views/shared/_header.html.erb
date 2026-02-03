@@ -1,0 +1,73 @@
+<header id="site-header" data-controller="header" data-turbo-permanent>
+  <nav class="desktop-header">
+    <div class="left">
+        <%= link_to root_path, class: "nav-link" do %>
+            <figure class="logo">Stoic</figure>
+        <% end %>
+    </div>
+
+    
+
+    <div class="right">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+
+        <div class="nav-item">
+            <%= link_to "About", class: "nav-link" %>
+
+            <div class="submenu">
+                <%= link_to "Our Team", class: "submenu-link" %>
+                <%= link_to "Our Story", class: "submenu-link" %>
+            </div>
+        </div>
+    
+        <% if user_signed_in? %>
+          <%= button_to "Log Out", destroy_user_session_path,
+                        method: :delete,
+                        data: { turbo: false },  # ← Key: bypass Turbo for full redirect
+                        form: { data: { turbo: false } },
+                        class: "nav-link btn btn-link" %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path,
+                      data: { turbo: false },
+                      class: "nav-link" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <%= link_to "Dashboard", admin_root_path,   # ← Or your actual dashboard path, e.g. dashboard_path or root_path if dashboard is root
+                      class: "nav-link" %>        
+        <% else %>
+          <%= link_to "Access", new_user_registration_path,
+                      data: { turbo: false },       # ← Same for sign-up
+                      class: "nav-link" %>
+        <% end %>
+    </div>
+  </nav>
+  <%= render 'shared/mobile_header' %>
+</header>
+
+<input type="checkbox" id="mobile-menu-toggle" class="menu-toggle" hidden>
+
+<div class="mobile-overlay-menu">
+  <!-- This label covers the entire overlay → clicking background closes -->
+  <label for="mobile-menu-toggle" class="overlay-close-label"></label>
+
+  <div class="mobile-menu-content">  <!-- ← new wrapper to stop propagation -->
+    <div class="mobile-menu-inner">
+      <%= link_to "Home", root_path, class: "mobile-menu-link" %>
+
+      <div class="mobile-submenu-wrapper">
+        <span class="mobile-submenu-title">About</span>
+        <div class="mobile-submenu">
+          <%= link_to "Our Team",   "#", class: "mobile-submenu-link" %>
+          <%= link_to "Our Story",  "#", class: "mobile-submenu-link" %>
+        </div>
+      </div>
+
+      <%= link_to "Contact", "#", class: "mobile-menu-link" %>
+      <%= link_to "Access", "#", class: "mobile-menu-link" %>
+    </div>
+
+    <!-- Close button (×) – also a label to toggle checkbox -->
+    <label for="mobile-menu-toggle" class="close-button">×</label>
+  </div>
+</div>

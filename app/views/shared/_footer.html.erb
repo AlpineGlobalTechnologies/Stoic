@@ -1,0 +1,44 @@
+<footer class="site-footer">
+  <div class="footer-container">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <h3>Stoic</h3>
+      <p>Exploring the road ahead with stories, guides, and automotive culture.</p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <%= link_to "Home", root_path %>
+      <%= link_to "About", "#" %>
+      <%= link_to "Our Team", "#" %>
+      <%= link_to "Contact", "#" %>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-links">
+      <h4>Resources</h4>
+      <%= link_to "Blog", "#" %>
+      <%= link_to "Guides", "#" %>
+      <%= link_to "Privacy Policy", "#" %>
+      <%= link_to "Terms of Service", "#" %>
+    </div>
+
+    <!-- Newsletter / CTA -->
+    <div class="footer-cta">
+      <h4>Stay Updated</h4>
+      <p>Get updates on new stories and features.</p>
+      <form>
+        <input type="email" placeholder="Email address" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <span>© <%= Time.current.year %> CarJourney. All rights reserved.</span>
+  </div>
+</footer>

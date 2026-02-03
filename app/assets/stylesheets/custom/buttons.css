@@ -1,0 +1,25 @@
+.cta-container { display: flex; gap: 15px; }
+
+/* Main CTA - Primary */
+.cta-button { padding: 13px 25px; border:2px solid #333; background:#333; color:#fff; border-radius: 10px; text-decoration: none; transition: 0.15s ease-in-out; }
+.cta-button:hover {background:transparent; color:#333;}
+
+
+/* Secondary CTA - Secondary */
+.cta-button.outlined {background:transparent;color:#333; border-color: #333;}
+.cta-button.outlined:hover {background:#000; border-color:#000; color:#fff;}
+
+/* Dark CTA - for light backgrounds */  
+.cta-button.dark {background:#2a2b2c; color:#fff;}
+.cta-button.dark:hover {background:#000;}
+
+/* Light CTA - for Dark backgrounds */  
+.cta-button.light {background:transparent; color:#fff; border-color:#fff;}
+.cta-button.light:hover {background:#fff; color:#2a2b2c;}
+
+/* Responsive */
+@media(max-width:781px){
+    .cta-container {flex-wrap: wrap;}
+}
+
+.form-links {display: flex; column-gap:10px; row-gap:20px; flex-wrap:wrap;}
