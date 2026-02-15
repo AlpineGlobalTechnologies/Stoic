@@ -1,22 +1,17 @@
-<div id="<%= dom_id quote %>">
-  <p>
-    <strong>Title:</strong>
-    <%= quote.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= quote.description %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= quote.author %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= quote.category %>
-  </p>
-
+<!-- app/views/quotes/_quote.html.erb (or admin/quotes/_quote.html.erb) -->
+<div class="quote card mb-3">
+  <div class="card-body">
+    <blockquote class="blockquote">
+      <p><%= quote.description %></p>
+      <footer class="blockquote-footer">
+        <%= quote.title %> — <cite title="Author"><%= quote.author.presence || "Anonymous" %></cite>
+      </footer>
+    </blockquote>
+    <p class="text-muted small">
+      <%= quote.date&.strftime("%B %d, %Y") || "Date not set" %>
+      <% if quote.category.present? %>
+        | <%= quote.category %>
+      <% end %>
+    </p>
+  </div>
 </div>

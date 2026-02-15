@@ -1,43 +1,30 @@
-<%= form_with model: portfolio_item, url: [:admin, portfolio_item], local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :featured, "Feature this project at the top?" %>
-    <%= f.check_box :featured %>
-    <small class="form-text text-muted">
-      Only one project should be featured — check this for your showcase piece.
-    </small>
-  </div>
-  <div class="form-group toggle">
-    <%= f.label :featured, "Featured on homepage?" %>
-    <%= f.check_box :featured, checked: f.object.featured? || true %>
-    <small class="form-text text-muted">
-      Uncheck to hide this item from the public portfolio page.
-    </small>
-  </div>
-  <div class="form-group">
-  <%= f.label :thumbnail, "Thumbnail Image" %>
-  <%= f.file_field :thumbnail, class: "form-control-file", accept: "image/*" %>
+<%= form_with model: quote, url: [:admin, quote], local: true do |f| %>
 
-  <% if portfolio_item.thumbnail.attached? %>
-    <div class="mt-2">
-      <p>Current thumbnail:</p>
-      <%= image_tag portfolio_item.thumbnail.variant(resize_to_limit: [300, 300]), class: "img-thumbnail" %>
-      <small><%= portfolio_item.thumbnail.filename %> (<%= number_to_human_size portfolio_item.thumbnail.byte_size %>)</small>
-    </div>
-  <% end %>
-</div>
+ 
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control", required: true %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :category %>
-    <%= f.select :category, options_for_select(["Completed", "Unfinished", "Web", "Flutter", "Automotive", "Healthcare", "Other"], selected: portfolio_item.category), class: "form-control" %>
+  <div class="form-group mb-3">
+    <%= f.label :author %>
+    <%= f.text_field :author, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :iframe_link %>
-    <%= f.url_field :iframe_link, class: "form-control", placeholder: "https://example.com/embed/..." %>
+    <%= f.label :source %>
+    <%= f.text_field :source, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select(["Passions and Emotions", "Other"], selected: quote.category), class: "form-control" %>
+  </div>
+
+
+  <div class="form-group mb-3">
+    <%= f.label :date, "Quote Date" %>
+    <%= f.date_field :date, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -45,8 +32,15 @@
     <%= f.text_area :description, class: "form-control", rows: 6 %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :explanation %>
+    <%= f.text_area :explanation, class: "form-control", rows: 6 %>
+  </div>
+
+
+
   <div class="form-actions">
-    <%= f.submit portfolio_item.persisted? ? "Update Item" : "Create Item", class: "btn btn-primary" %>
-    <%= link_to "Cancel", admin_portfolio_items_path, class: "btn btn-secondary" %>
+    <%= f.submit quote.persisted? ? "Update Item" : "Create Item", class: "btn btn-primary" %>
+    <%= link_to "Cancel", admin_quotes_path, class: "btn btn-secondary" %>
   </div>
 <% end %>

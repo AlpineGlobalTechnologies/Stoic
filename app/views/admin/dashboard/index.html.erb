@@ -4,15 +4,10 @@
 
 <div style="margin: 2rem 0;" class="quick-stats">
   <h2>Quick Stats</h2>
-  <p>Portfolio items: <%= @portfolio_count %></p>
-  <% if @resume && @resume.pdf.attached? %>
-    <p>Resume PDF: Uploaded (<%= link_to "Download", rails_blob_path(@resume.pdf, disposition: "attachment") %>)</p>
-  <% else %>
-    <p>Resume PDF: Not uploaded yet</p>
-  <% end %>
+  <p>Quotes: <%= @quote_count %></p>
+
 </div>
 
 <div class="admin-actions" style="margin: 2rem 0;">
-    <%= link_to "Manage Portfolio Items", admin_portfolio_items_path, class: "cta-button" %>
-    <%= link_to "Manage Resume", edit_admin_resume_path, class: "cta-button outlined" %>
+    <%= link_to "Manage Quotes", admin_quotes_path, class: "cta-button" %>
 </div>

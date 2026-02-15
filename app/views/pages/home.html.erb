@@ -17,3 +17,21 @@
         </div>
     </div>
 </section>
+
+<section class="quotes">
+  <div class="inner-content">
+    <div class="columns center">
+      <div class="column">
+        <div id="quotes">
+          <% if @quote %>
+            <%= render @quote %>   <!-- Rails auto-looks for app/views/quotes/_quote.html.erb -->
+
+            <!-- Optional: fallback message if no quote exists -->
+          <% else %>
+            <p class="has-text-centered">No quotes available yet.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

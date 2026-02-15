@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-    def home
-      @quote = Quote.order(created_at: :desc)
-      # or .order(:title) or whatever sorting you prefer
-    end
+  def home
+    @quote = Quote.for_today || Quote.order(created_at: :desc).first
+  
   end
+end

@@ -1,9 +1,9 @@
-class QuotesController < ApplicationController
+class Admin::QuotesController < Admin::BaseController   # ← change this line
+  # before_action :authenticate_admin!    ← you can remove this line now
   before_action :set_quote, only: %i[ show edit update destroy ]
 
-  # GET /quotes or /quotes.json
   def index
-    @quotes = Quote.all
+    @quotes = Quote.order(date: :desc, created_at: :desc)
   end
 
   # GET /quotes/1 or /quotes/1.json
@@ -65,6 +65,6 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.expect(quote: [ :title, :description, :author, :category ])
+      params.expect(quote: [:title, :description, :author, :source, :category, :date, :explanation])
     end
 end
