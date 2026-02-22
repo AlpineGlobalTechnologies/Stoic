@@ -1,70 +1,67 @@
-class Admin::QuotesController < Admin::BaseController   # ← change this line
-  # before_action :authenticate_admin!    ← you can remove this line now
-  before_action :set_quote, only: %i[ show edit update destroy ]
+class Admin::QuotesController < Admin::BaseController
+  before_action :set_quote, only: %i[show edit update destroy]
 
+  # GET /admin/quotes
   def index
     @quotes = Quote.order(date: :desc, created_at: :desc)
   end
 
-  # GET /quotes/1 or /quotes/1.json
+  # GET /admin/quotes/:id
   def show
   end
 
-  # GET /quotes/new
+  # GET /admin/quotes/new
   def new
     @quote = Quote.new
   end
 
-  # GET /quotes/1/edit
+  # GET /admin/quotes/:id/edit
   def edit
   end
 
-  # POST /quotes or /quotes.json
+  # POST /admin/quotes
   def create
     @quote = Quote.new(quote_params)
 
-    respond_to do |format|
-      if @quote.save
-        format.html { redirect_to @quote, notice: "Quote was successfully created." }
-        format.json { render :show, status: :created, location: @quote }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
-      end
+    if @quote.save
+      redirect_to [:admin, @quote], notice: "Quote was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /quotes/1 or /quotes/1.json
+  # PATCH/PUT /admin/quotes/:id
   def update
-    respond_to do |format|
-      if @quote.update(quote_params)
-        format.html { redirect_to @quote, notice: "Quote was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @quote }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
-      end
+    if @quote.update(quote_params)
+      redirect_to [:admin, @quote], notice: "Quote was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /quotes/1 or /quotes/1.json
-  def destroy
-    @quote.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+  # DELETE /admin/quotes/:id
+  def destroy
+    @quote.destroy
+    redirect_to admin_quotes_path, notice: "Quote was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_quote
-      @quote = Quote.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def quote_params
-      params.expect(quote: [:title, :description, :author, :source, :category, :date, :explanation])
-    end
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
+
+  def quote_params
+    params.require(:quote).permit(
+      :title,
+      :description,
+      :author,
+      :source,
+      :category,
+      :date,
+      :explanation,
+      :image
+    )
+  end
 end

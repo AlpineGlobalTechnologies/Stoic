@@ -1,4 +1,5 @@
 class Quote < ApplicationRecord
+    has_one_attached :image
     validates :title, presence: true
     # validates :date, uniqueness: true   # optional
   
