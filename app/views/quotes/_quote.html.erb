@@ -1,26 +1,44 @@
-<!-- app/views/quotes/_quote.html.erb (or admin/quotes/_quote.html.erb) -->
 <div class="quote card mb-3">
   <div class="card-body">
     <blockquote class="blockquote animate-fade-up">
-    <% if quote.image.attached? %>
-          <div class="author-image mt-2 animate-fade-in">
-            <%= image_tag quote.image, class: "img-thumbnail", width:"100%", height:"auto", style:'object-fit: cover;aspect-ratio: 1/1;' %>
-          </div>
-        <% end %>
+
+      <% if quote.image.attached? %>
+        <div class="author-image mt-2 animate-fade-in">
+          <%= image_tag quote.image,
+              class: "img-thumbnail",
+              width: "100%",
+              height: "auto",
+              style: "object-fit: cover; aspect-ratio: 1/1;" %>
+        </div>
+      <% end %>
+
       <p><%= quote.description %></p>
+
       <footer class="blockquote-footer animate-fade-in">
-        <%= quote.title %> — 
+        <%= quote.title %> —
+
         <cite title="Author" class="animate-fade-in">
-        <%= quote.author.presence || "Anonymous" %> 
-        
+          <%= quote.author&.name || "Anonymous" %>
+
+          <% if quote.author&.avatar&.attached? %>
+            <div class="author-avatar mt-2">
+              <%= image_tag quote.author.avatar,
+                  width: 80,
+                  class: "img-thumbnail",
+                  style: "object-fit: cover; aspect-ratio: 1/1;" %>
+            </div>
+          <% end %>
         </cite>
       </footer>
+
     </blockquote>
+
     <cite class="animate-fade-up">
       <%= quote.date&.strftime("%B %d, %Y") || "Date not set" %>
       <% if quote.category.present? %>
         | <%= quote.category %>
       <% end %>
     </cite>
+
   </div>
 </div>

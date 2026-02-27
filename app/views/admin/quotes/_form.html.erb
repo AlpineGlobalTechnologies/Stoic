@@ -7,8 +7,13 @@
   </div>
 
   <div class="form-group mb-3">
-    <%= f.label :author %>
-    <%= f.text_field :author, class: "form-control" %>
+    <%= f.label :author_id, "Author" %>
+    <%= f.collection_select :author_id,
+          Author.order(:name),
+          :id,
+          :name,
+          { prompt: "Select an Author" },
+          { class: "form-control" } %>
   </div>
 
   <div class="form-group">

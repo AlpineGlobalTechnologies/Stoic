@@ -8,6 +8,9 @@ margin: 0;
 .admin-body a:after {content:''; display: block; opacity: 0; width: 0;height: 2px; background:#333; transition:all 0.15s ease-in-out; position: relative; top:5px; left:0;}
 .admin-body a:hover:after {opacity: 1;width:90%;}
 
+.admin-body a.cta-button { width: auto; height: unset;}
+.admin-body a.cta-button:after {content:none;}
+
 .admin-header {
 background: var(--header-bg);
 color: white;
@@ -127,17 +130,27 @@ margin: 0 4px;
 }
 
 
-a.btn { width:fit-content; padding:15px 10px; border-radius: 3px; background:#333; color:#FFF; transition: all 0.15s ease-in-out; text-decoration: none; display: flex; align-items: center; }
-a.btn:after { content:none; }
-a.btn:hover { opacity: 0.8; border-color: transparent; }
-
 .admin-actions a { width:fit-content; padding:15px 10px; border-radius: 3px; background:#333; color:#FFF; transition: all 0.15s ease-in-out; text-decoration: none; display: flex; align-items: center; }
 .admin-actions a:after { content:none; }
 .admin-actions a:hover { opacity: 0.8; border-color: transparent; }
 
+a.btn { width:fit-content; padding:15px 10px; border-radius: 3px; background:#333; color:#FFF; transition: all 0.15s ease-in-out; text-decoration: none; display: flex; align-items: center; }
+a.btn:after { content:none; }
+a.btn:hover { opacity: 0.8; border-color: transparent; }
+
 a.btn.btn-sm { padding: 5px 10px; text-decoration: none; border-radius: 3px; display: flex; align-items: center;border: 1px solid; transition: all 0.15s ease-in-out;}
 a.btn.btn-sm.btn-info { background: #eee; color: #333; }
 a.btn.btn-sm.btn-warning { background: #333; color: #fff; }
+
+.admin-body a.cta-button {
+    padding: 13px 25px;
+    border: 2px solid #333;
+    background: #333;
+    color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.15s ease-in-out;
+}
 
 a.btn.btn-sm:hover {
 opacity: 0.8;

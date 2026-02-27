@@ -56,11 +56,11 @@ class Admin::QuotesController < Admin::BaseController
     params.require(:quote).permit(
       :title,
       :description,
-      :author,
-      :source,
+      :author_id,
       :category,
       :date,
       :explanation,
+      :source,
       :image
     )
   end

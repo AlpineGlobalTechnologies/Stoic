@@ -1,0 +1,12 @@
+<% content_for :title, "Editing author" %>
+
+<h1>Editing author</h1>
+
+<%= render "form", author: @author %>
+
+<br>
+
+<div>
+  <%= button_to "Show This Author", @author, class:"cta-button" %>,  |
+  <%= button_to "Back to Authors", admin_authors_path, class:"cta-button" %>
+</div>

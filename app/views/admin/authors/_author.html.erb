@@ -1,0 +1,18 @@
+<div id="<%= dom_id author %>">
+
+  <% if author.avatar.attached? %>
+    <div class="mb-3">
+      <%= image_tag author.avatar, class: "img-thumbnail", width: 150, height: 150, style: "object-fit: cover; aspect-ratio: 1/1;" %>
+    </div>
+  <% end %>
+  <p>
+    <strong>Name:</strong>
+    <%= author.name %>
+  </p>
+
+  <p>
+    <strong>Bio:</strong>
+    <%= author.bio %>
+  </p>
+
+</div>

@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Authors" %>
+
+<h1>Authors</h1>
+
+
+
+<div id="authors">
+<%= link_to "New Author", new_admin_author_path, class:"cta-button" %>
+
+  <% @authors.each do |author| %>
+    <%= render author %>
+    <p>
+      <%= link_to "Show This Author", admin_author_path(author), class:"cta-button" %>
+    </p>
+  <% end %>
+</div>

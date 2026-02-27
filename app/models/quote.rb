@@ -1,6 +1,7 @@
 class Quote < ApplicationRecord
     has_one_attached :image
     validates :title, presence: true
+    belongs_to :author
     # validates :date, uniqueness: true   # optional
   
     scope :for_today, -> { find_by(date: Date.current) }
