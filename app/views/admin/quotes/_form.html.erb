@@ -13,7 +13,8 @@
           :id,
           :name,
           { prompt: "Select an Author" },
-          { class: "form-control" } %>
+          { class: "form-control" } 
+    %>
   </div>
 
   <div class="form-group">
@@ -41,18 +42,6 @@
     <%= f.label :explanation %>
     <%= f.text_area :explanation, class: "form-control", rows: 6 %>
   </div>
-
-  <div class="form-group">
-    <label for="image">Author Image</label>
-    <%= f.file_field :image, class: "form-control" %>
-     <% if quote.image.attached? %>
-      <div class="mt-2">
-        <%= image_tag quote.image, class: "img-thumbnail" %>
-      </div>
-    <% end %>
-  </div>
-
-
 
   <div class="form-actions">
     <%= f.submit quote.persisted? ? "Update Item" : "Create Item", class: "btn btn-primary" %>

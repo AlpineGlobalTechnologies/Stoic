@@ -18,12 +18,12 @@
     <% @quotes.each do |quote| %>
       <tr>
       <td>
-      <% if quote.image.attached? %>
+        <% if quote.image.attached? %>
             <%= image_tag quote.image, class: "img-thumbnail", width:50, height:50, style:'object-fit: cover;aspect-ratio: 1/1;' %>
         <% end %>
         </td>
         <td><%= quote.title %></td>
-        <td><%= quote.author.presence || "—" %></td>
+        <td><%= quote.author&.name || "Anonymous" %></td>
         <td><%= quote.date&.strftime("%b %d, %Y") || "—" %></td>
         <td><%= quote.category.presence || "—" %></td>
         <td>

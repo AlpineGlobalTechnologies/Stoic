@@ -2,16 +2,6 @@
   <div class="card-body">
     <blockquote class="blockquote animate-fade-up">
 
-      <% if quote.image.attached? %>
-        <div class="author-image mt-2 animate-fade-in">
-          <%= image_tag quote.image,
-              class: "img-thumbnail",
-              width: "100%",
-              height: "auto",
-              style: "object-fit: cover; aspect-ratio: 1/1;" %>
-        </div>
-      <% end %>
-
       <p><%= quote.description %></p>
 
       <footer class="blockquote-footer animate-fade-in">

@@ -1,52 +1,51 @@
 class Admin::AuthorsController < Admin::BaseController
-  before_action :set_author, only: %i[ show new edit update destroy ]
+  before_action :set_author, only: [:show, :edit, :update, :destroy]
 
-  # GET /authors or /authors.json
   def index
     @authors = Author.all
   end
 
-  # GET /authors/1 or /authors/1.json
   def show
+    @author = Author.find(params[:id])
   end
 
-  # GET /authors/new
   def new
     @author = Author.new
   end
 
-  # GET /authors/1/edit
   def edit
-
+      @author = Author.find(params[:id])
   end
 
-  # POST /authors or /authors.json
   def create
     @author = Author.new(author_params)
+    if @author.save
+      redirect_to [:admin, @author], notice: "Author created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # PATCH/PUT /authors/1 or /authors/1.json
   def update
-    @author.update!(author_params)
+    if @author.update(author_params)
+      redirect_to [:admin, @author], notice: "Author updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
-  # DELETE /authors/1 or /authors/1.json
   def destroy
-  if @author.destroy
-    redirect_to admin_authors_path, notice: "Author deleted."
-  else
-    redirect_to admin_authors_path, alert: @author.errors.full_messages.to_sentence
+    @author.destroy
+    redirect_to admin_authors_path
   end
-end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_author
-      @author = Author.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def author_params
-      params.expect(author: [ :name, :bio ])
-    end
+  def set_author
+    @author = Author.find(params[:id])
+  end
+
+  def author_params
+    params.require(:author).permit(:name, :bio, :avatar)
+  end
 end
